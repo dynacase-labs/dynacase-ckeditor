@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<module name="dynacase-ckeditor" version="@VERSION@" release="@RELEASE@" basecomponent="yes" >
+
+  <description>This HTML text editor brings to the web many of the powerful functionalities of desktop editors like MS Word. It's lightweight and doesnt require any kind of installation on the client computer.</description>
+  <requires>
+    <module name="dynacase-platform" />
+  </requires>
+
+  <parameters>
+    <param name="ckeditor_url" label="CKeditor download URL" type="text" default="http://ftp.dynacase.org/third-party/ckeditor_3.6.3.tar.gz" />
+  </parameters>
+
+  <pre-install>
+    <check type="syscommand" command="gunzip" />
+    <check type="syscommand" command="tar" />
+    <check type="syscommand" command="find" />
+    <check type="syscommand" command="chmod" />
+  </pre-install>
+
+  <pre-upgrade>
+    <check type="syscommand" command="gunzip" />
+    <check type="syscommand" command="tar" />
+    <check type="syscommand" command="find" />
+    <check type="syscommand" command="chmod" />
+  </pre-upgrade>
+
+  <post-install>
+    <download href="@ckeditor_url" action="programs/ckeditor_install"><label lang="en">Download and install CKeditor</label></download>
+  </post-install>
+
+  <post-upgrade>
+    <download href="@ckeditor_url" action="programs/ckeditor_install"><label lang="en">Download and install CKeditor</label></download>
+  </post-upgrade>
+
+</module>
