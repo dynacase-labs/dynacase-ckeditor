@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<module name="dynacase-ckeditor" version="@VERSION@" release="@RELEASE@" basecomponent="yes" >
+<module name="dynacase-ckeditor" version="@VERSION@" release="@RELEASE@" basecomponent="no" >
 
   <description>This HTML text editor brings to the web many of the powerful functionalities of desktop editors like MS Word. It's lightweight and doesnt require any kind of installation on the client computer.</description>
   <requires>
