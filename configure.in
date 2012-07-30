@@ -5,7 +5,7 @@ VERSION=`cat VERSION`
 AC_SUBST(RELEASE)
 RELEASE=`cat RELEASE`
 AC_SUBST(PACKAGE)
-PACKAGE=dynacase-ckeditor
+PACKAGE=dynacase-ckeditor-installer
 AC_SUBST(APPNAME)
 APPNAME=ckeditor
 
