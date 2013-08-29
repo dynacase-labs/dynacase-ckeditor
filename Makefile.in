@@ -26,4 +26,9 @@ $(pubdir)/$(appname): $(pubdir)
 $(pubdir)/$(appname)/.htaccess: htaccess $(pubdir)/$(appname)
 	cp htaccess $(pubdir)/ckeditor/.htaccess
 
-publish: $(pubdir)/programs/ckeditor_install $(pubdir)/$(appname)/.htaccess
+$(pubdir)/.autoloader-ignore.d:
+	mkdir -p $@
+$(pubdir)/.autoloader-ignore.d/@PACKAGE@: autoloader-ignore-d $(pubdir)/.autoloader-ignore.d
+	cp $< $@
+
+publish: $(pubdir)/programs/ckeditor_install $(pubdir)/$(appname)/.htaccess $(pubdir)/.autoloader-ignore.d/@PACKAGE@
