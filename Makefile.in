@@ -4,6 +4,7 @@ RELEASE=@RELEASE@
 utildir=@PUBRULE@
 pubdir=@prefix@
 appname=@APPNAME@
+libdir=lib/ckeditor/4
 
 pages_not_xml=info.xml
 pages_not_php=fam2po.php po2js.php
@@ -16,19 +17,19 @@ $(pubdir):
 $(pubdir)/programs: $(pubdir)
 	mkdir -p $@
 
-$(pubdir)/programs/ckeditor_install: programs/ckeditor_install $(pubdir)/programs
+$(pubdir)/programs/ckeditor4_install: programs/ckeditor4_install $(pubdir)/programs
 	cp $< $@
 	chmod a+x $@
 
-$(pubdir)/$(appname): $(pubdir)
+$(pubdir)/$(libdir): $(pubdir)
 	mkdir -p $@
 
-$(pubdir)/$(appname)/.htaccess: htaccess $(pubdir)/$(appname)
-	cp htaccess $(pubdir)/ckeditor/.htaccess
+$(pubdir)/$(libdir)/.htaccess: htaccess $(pubdir)/$(libdir)
+	cp $<  $@
 
 $(pubdir)/.autoloader-ignore.d:
 	mkdir -p $@
 $(pubdir)/.autoloader-ignore.d/@PACKAGE@: autoloader-ignore-d $(pubdir)/.autoloader-ignore.d
 	cp $< $@
 
-publish: $(pubdir)/programs/ckeditor_install $(pubdir)/$(appname)/.htaccess $(pubdir)/.autoloader-ignore.d/@PACKAGE@
+publish: $(pubdir)/programs/ckeditor4_install $(pubdir)/$(libdir)/.htaccess $(pubdir)/.autoloader-ignore.d/@PACKAGE@
