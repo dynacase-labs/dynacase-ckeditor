@@ -5,7 +5,7 @@
 
 
   <parameters>
-    <param name="ckeditor_url" label="CKeditor download URL" type="text" default="http://ftp.dynacase.org/third-party/ckeditor_4.4.6_bootstrap.zip" volatile="yes" onupgrade="W" />
+    <param name="ckeditor_url" label="CKeditor download URL" type="text" default="http://ftp.dynacase.org/third-party/ckeditor_4.4.7_bootstrap.zip" volatile="yes" onupgrade="W" />
   </parameters>
 
   <pre-install>
