@@ -1,9 +1,9 @@
-<FilesMatch "^.*$>
+<FilesMatch "^.*$">
 	Order Deny,Allow
 	Allow from All
 </FilesMatch>
 
-<FilesMatch "\\.php$>
+<FilesMatch "\.php$">
 	Order Deny,Allow
 	Deny from All
 </FilesMatch>
