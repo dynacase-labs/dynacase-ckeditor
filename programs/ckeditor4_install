@@ -125,10 +125,31 @@ if( $ret !== 0 ) {
   exit(1);
 }
 
+// Apply patches
+$patchFiles = array(
+  'lib/ckeditor/4/patches/dev_7269_01.diff'
+);
+foreach ($patchFiles as $patchFile) {
+  applyPatch($patchFile);
+}
+
 // Cleanup tempdir
 $cmd = sprintf('rm -Rf "%s"', escapeshellcmd($tempdir));
 system($cmd, $ret);
 
 exit(0);
 
-?>
+function applyPatch($patchFile) {
+    $cmd = sprintf('patch -p1 --dry-run < %s', escapeshellarg($patchFile));
+    system($cmd, $ret);
+    if ($ret !== 0) {
+        printf("Error testing application of patch file '%s'!", $patchFile);
+        exit(1);
+    }
+    $cmd = sprintf('patch -p1 < %s', escapeshellarg($patchFile));
+    system($cmd, $ret);
+    if ($ret !== 0) {
+        printf("Error applying patch file '%s'!", $patchFile);
+        exit(1);
+    }
+}
