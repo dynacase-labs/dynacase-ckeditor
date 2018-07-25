@@ -32,4 +32,9 @@ $(pubdir)/.autoloader-ignore.d:
 $(pubdir)/.autoloader-ignore.d/@PACKAGE@: autoloader-ignore-d $(pubdir)/.autoloader-ignore.d
 	cp $< $@
 
-publish: $(pubdir)/programs/ckeditor4_install $(pubdir)/$(libdir)/.htaccess $(pubdir)/.autoloader-ignore.d/@PACKAGE@
+$(pubdir)/$(libdir)/patches: $(pubdir)/$(libdir)
+	mkdir -p $@
+$(pubdir)/$(libdir)/patches/%.diff: $(libdir)/patches/%.diff $(pubdir)/$(libdir)/patches
+	cp $< $@
+
+publish: $(pubdir)/programs/ckeditor4_install $(pubdir)/$(libdir)/.htaccess $(pubdir)/.autoloader-ignore.d/@PACKAGE@ $(pubdir)/$(libdir)/patches/dev_7269_01.diff
